@@ -164,6 +164,116 @@ $x = "Hatorki"
 var_dump($x) // it will give "sting" as output
 ```
 
+# 20-March-2025
+
+# Methods: string manipulation on string str
+* strlen()
+```php
+$str = "Hello, World!";
+echo strlen($str); // Output: 13
+```
+* str_word_count()
+```php
+$str = "Hello, World!";
+echo str_word_count($str); // Output: 2
+```
+* str_pos()
+```php
+$str = "Hello, World!";
+echo strpos($str, "World"); // Output: 7
+```
+* strtolower()
+```php
+$str = "Hello, World!";
+echo strtolower($str); // Output: hello, world!
+```
+* strtoupper()
+```php
+$str = "Hello, World!";
+echo strtoupper($str); // Output: HELLO, WORLD!
+```
+* strrev()
+```php
+$str = "Hello, World!";
+echo strrev($str); // Output: !dlroW ,olleH
+```
+* substr()
+```php
+$str = "Hello, World!";
+echo substr($str, 7, 5); // Output: World
+```
+* str_replace()
+```php
+$str = "Hello, World!";
+echo str_replace("World", "PHP", $str); // Output: Hello, PHP!
+```
+
+# Arithmetic, Assignment, and Logical Operators in PHP
+
+Arithmetic operators are used to perform mathematical operations on numerical values in PHP.
+
+## List of Arithmetic Operators
+
+| Operator | Name           | Description                             | Example    | Output      |
+| -------- | -------------- | --------------------------------------- | ---------- | ----------- |
+| `+`      | Addition       | Adds two numbers                        | `$a + $b`  | `30`        |
+| `-`      | Subtraction    | Subtracts one number from another       | `$a - $b`  | `10`        |
+| `*`      | Multiplication | Multiplies two numbers                  | `$a * $b`  | `200`       |
+| `/`      | Division       | Divides one number by another           | `$a / $b`  | `2`         |
+| `%`      | Modulus        | Returns the remainder of division       | `$a % $b`  | `0`         |
+| `**`     | Exponentiation | Raises a number to the power of another | `$a ** $b` | `100000000` |
+
+## List of Assignment Operators
+
+Assignment operators are used to assign values to variables in PHP.
+
+| Operator | Name              | Description                                      | Example    | Equivalent To  |
+| -------- | ----------------- | ------------------------------------------------ | ---------- | -------------- |
+| `=`      | Assignment        | Assigns right operand to left operand            | `$a = $b`  | `$a = $b`       |
+| `+=`     | Addition Assignment | Adds right operand to left operand and assigns  | `$a += $b` | `$a = $a + $b`  |
+| `-=`     | Subtraction Assignment | Subtracts right operand from left operand and assigns | `$a -= $b` | `$a = $a - $b`  |
+| `*=`     | Multiplication Assignment | Multiplies left operand by right operand and assigns | `$a *= $b` | `$a = $a * $b`  |
+| `/=`     | Division Assignment | Divides left operand by right operand and assigns | `$a /= $b` | `$a = $a / $b`  |
+| `%=`     | Modulus Assignment | Takes modulus using two operands and assigns    | `$a %= $b` | `$a = $a % $b`  |
+| `**=`    | Exponentiation Assignment | Raises left operand to power of right operand and assigns | `$a **= $b` | `$a = $a ** $b` |
+
+## List of Logical Operators
+
+Logical operators are used to combine conditional statements in PHP.
+
+| Operator | Name        | Description                                                | Example            | Output |
+| -------- | ----------- | ---------------------------------------------------------- | ------------------ | ------ |
+| `&&`     | AND        | Returns true if both conditions are true                   | `($a > 0 && $b > 0)` | `true` |
+| `||`     | OR         | Returns true if at least one condition is true             | `($a > 0 || $b < 0)` | `true` |
+| `!`      | NOT        | Returns true if the condition is false                     | `!($a > 0)`         | `false` |
+| `xor`    | XOR        | Returns true if only one condition is true                 | `($a > 0 xor $b < 0)` | `true` |
+
+## Examples in PHP
+
+```php
+<?php
+$a = 20;
+$b = 10;
+
+// Logical AND
+$result = ($a > 0 && $b > 0);
+echo "Logical AND: ". ($result ? 'true' : 'false') ."\n";
+
+// Logical OR
+$result = ($a > 0 || $b < 0);
+echo "Logical OR: ". ($result ? 'true' : 'false') ."\n";
+
+// Logical NOT
+$result = !($a > 0);
+echo "Logical NOT: ". ($result ? 'true' : 'false') ."\n";
+
+// Logical XOR
+$result = ($a > 0 xor $b < 0);
+echo "Logical XOR: ". ($result ? 'true' : 'false') ."\n";
+?>
+```
+
+
 
 
 
