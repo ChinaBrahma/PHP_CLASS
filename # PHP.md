@@ -273,6 +273,104 @@ echo "Logical XOR: ". ($result ? 'true' : 'false') ."\n";
 ?>
 ```
 
+# 21-March-2025
+
+## Conditional Statements
+
+### if...else...
+```php
+<?php
+$age = 20;
+
+if ($age >= 18) {
+    echo "You are eligible to vote.";
+} else {
+    echo "You are not eligible to vote.";
+}
+?>
+
+```
+### if...elseif...else
+```php
+<?php
+$marks = 75;
+
+if ($marks >= 90) {
+    echo "Grade: A+";
+} elseif ($marks >= 80) {
+    echo "Grade: A";
+} elseif ($marks >= 70) {
+    echo "Grade: B";
+} else {
+    echo "Grade: C";
+}
+?>
+
+```
+### switch...case
+```php
+<?php
+$day = "Tuesday";
+
+switch ($day) {
+    case "Monday":
+        echo "Start of the workweek!";
+        break;
+    case "Tuesday":
+        echo "Second day of the workweek!";
+        break;
+    case "Friday":
+        echo "Weekend is near!";
+        break;
+    default:
+        echo "It's a regular day!";
+        break;
+}
+?>
+
+```
+## Loops
+
+### While loop
+```php
+<?php
+$count = 1;
+
+while ($count <= 5) {
+    echo "Count: $count<br>";
+    $count++;
+}
+?>
+```
+### do... while loop
+```php
+<?php
+$count = 1;
+
+do {
+    echo "Count: $count<br>";
+    $count++;
+} while ($count <= 5);
+?>
+```
+### for loop
+```php
+<?php
+for ($i = 1; $i <= 5; $i++) {
+    echo "Iteration: $i<br>";
+}
+?>
+```
+### foreach loop (for Array)
+```php
+<?php
+$colors = array("Red", "Green", "Blue");
+
+foreach ($colors as $color) {
+    echo "Color: $color<br>";
+}
+?>
+```
 
 
 
