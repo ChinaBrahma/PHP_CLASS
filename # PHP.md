@@ -372,7 +372,31 @@ foreach ($colors as $color) {
 ?>
 ```
 
-
+# Data Collection from "Form"
+file.html
+```php
+<html>
+    <head><title>Form</title>
+    <body>
+        <form action="getValidate.php" method="POST">
+            Name: <input type="text" id="name" name="name" value="">
+            Email: <input type="text" id="email" name="email">
+            <button type="submit">
+        </form>
+    </body>
+</html>
+```
+getValidate.php
+```php
+<html>
+    <body>
+        <?php 
+            echo "Name= ".$_POST["name"] . "<br>";
+            echo  "emailId=" . $_POST["email"] . "<br>";
+        ?>
+    </body>
+</html>
+```
 
 
     
