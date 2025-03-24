@@ -398,5 +398,67 @@ getValidate.php
 </html>
 ```
 
+# 23-March-2025
+## PHP form validation
 
-    
+![input form](Form.png)
+
+```php
+<html>
+    <head>
+        <title>Form</title>
+    </head>
+    <body>
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+        Name: <input type="text" name="name" value="">
+        Email: <input type="text" name="email" value="">
+        <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>
+```
+
+## Malicious Attack example
+link: [http://localhost/index.php/%22%3E%3Cscript%3Ealert('Hacked')%3C/script%3E
+](http://localhost/index.php/%22%3E%3Cscript%3Ealert('Hacked')%3C/script%3E)
+## which converts into the following
+```
+<form action="input.php"><script>alert("Hacked")</script></form>
+```
+![](attack.jpeg)
+
+## To make our form secure we use htmlspecialchars() and Validate & Sanitize User Input
+```php
+<html>
+    <head>
+        <title>Form</title>
+    </head>
+    <body>
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"  method="POST"> 
+        Name: <input type="text" name="name" value="">
+        Email: <input type="text" name="email" value="">
+        <input type="submit" value="Submit">
+        </form>
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $name = htmlspecialchars(strip_tags($_POST    ["name"]));
+            $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+
+            echo "Name: " . $name . "<br>";
+            echo "Email: " . $email . "<br>";
+        }
+        ?>
+    </body>
+</html>
+```
+```php
+<?php
+$nameErr="",
+$name="",
+if(empty($_POST["name"])){
+    $nameErr="Name Required";
+}else{
+    $name=htmlspecialchar($_POST["name"])
+}
+>
+```
