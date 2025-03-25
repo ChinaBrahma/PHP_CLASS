@@ -462,3 +462,94 @@ if(empty($_POST["name"])){
 }
 >
 ```
+
+# 25-March-2025
+
+# php form validation
+
+### To filter data in php form:
+```php
+<?php
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
+        $name=test_form($_POST["name"]);
+        $email=test_form($_POST["email"]);
+    }
+
+
+function test_form($data){
+    $data=trim($data);
+    $data=stripslashes($data);
+    $data=htmlspecialchars($data);
+    return $data;
+}
+?>
+```
+### Another Example
+```php
+<?php
+    // To check for empty fields
+    $nameErr=$emailErr="";
+    $name=$email="";
+    if(empty($name)){
+        $nameErr="Name Required";
+    }else{
+        $name=test_form($name);
+    }
+    if(empty($email)){
+        $emailErr="Email Required";
+    }else{
+        $email=test_form($email);
+    }
+
+    function test_form($data){
+        $data=trim($data);
+        $data=stripslashes($data);
+        $data=htmlspecialchars($data);
+        return $data;
+    }
+?>
+```
+### For checking for pattern
+```php
+<?php
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
+        // For name field
+        if(empty($name)){
+            $nameErr="Name required";
+        }else{
+            name=test_form($data);
+            if(!preg_match("^[a-zA-Z-']*&/", $name)){
+                $nameErr="Only letter and white space required";
+            }
+        }
+        // For email field
+        if(empty($email)){
+            $emailErr="Name required";
+        }else{
+            name=test_form($data);
+            if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+                $emailErr="Invalid Email Format";
+            }
+        }
+        // For url
+        if(empty($email)){
+            $urlErr="URL required";
+        }else{
+            name=test_form($URL);
+            if(!preg_match("/\b(?:(?:https?/ftp:\/\/|www\.[a-z0-9+$@#/\%?~=~|...]", $URL)){
+                $urlErr="Invalid URL";
+            }
+        }
+    }
+?>
+```
+### Form
+```php
+<form action="<?php
+    echo htmlspecialchar($_SERVER['PHP_SELF']); ?>">
+    Name:<input type="text" name="name">*<?php echo $nameErr; ?>
+    Email:<input type="text" name="email">*<?php echo $emailErr; ?>
+    <button type="submit" value="Submit">
+</form>
+```
+![Form](FormA.png)
