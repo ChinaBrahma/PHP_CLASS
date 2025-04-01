@@ -12,7 +12,7 @@ class Car {
     // Method to display car details
     public function displayCar() {
         echo "Car Model: " . $this->model . "<br>";
-        echo "Car Color: " . $this->color . "<br>";
+        echo "Car Color: " . $this->color . "<br>\n";
     }
 }
 
