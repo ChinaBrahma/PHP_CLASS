@@ -553,3 +553,238 @@ function test_form($data){
 </form>
 ```
 ![Form](FormA.png)
+
+# 27_March_2025
+
+File Handling
+
+# 28-March_2025
+
+## Database Connection
+
+Database Server: 
+```
+ip = localhost://ipaddress
+username="root",
+Password="";
+```
+
+Example
+```
+<?php
+    $server_ip="localhost";
+    $username="root";
+    $password="";
+
+    $conn = new mysql($server_ip, $username, $password);
+
+    if($conn=>connection_error="true"){
+        echo "Database connection error";
+    }
+
+    $sql = "CREATE database mydb";
+    if(conn=>query($sql)){
+        echo "Database created success";
+    }else{
+        echo "Database connection error";
+    }
+?>
+```
+# 01-April-2025
+
+## Cookie, Session, casting
+
+# Cookie
+example:-
+```php
+<?php
+    $cookie_name = "user";
+    $cookie_value = "John Doe";
+    // Correct syntax: setcookie(name, value, expiry time)
+    setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 30 days expiry
+?>
+
+<?php
+    if (!isset($_COOKIE[$cookie_name])) {
+        echo "Cookie is not set";
+    } else {
+        echo "Cookie name: " . $cookie_name . " | Cookie Value: " . $_COOKIE[$cookie_name];
+    }
+?>
+
+```
+To delete the cookie
+```php
+<?php
+    $cookie_name = "user";
+    // To delete a cookie, set its expiration time to the past
+    setcookie($cookie_name, "", time() - 3600, "/");
+?>
+
+```
+
+# Session
+example:-
+```php
+<?php
+    session_start(); // Must be at the very beginning
+?>
+
+<html>
+    <body>
+        <?php
+            $_SESSION["favColor"] = "green";
+            $_SESSION["favFruit"] = "mango";
+        ?>
+    </body>
+</html>
+
+```
+DemoSession2:php
+```php
+<?php
+    session_start();
+?>
+<html>
+    <body>
+        <?php 
+            echo "Value of fav color :".$_SESSION["favColor"];
+            echo "Value of fav fruit :".$_SESSION["favFruit"];
+        ?>
+    </body>
+</html>
+```
+# Methods:
+1. 🚀 session_start() → Always call it at the beginning of a script.
+eg-> 
+
+2. 🧹 session_unset() → Clears session variables.
+```
+<?php
+    session_start(); // Start the session
+
+    $_SESSION["username"] = "JohnDoe";
+    $_SESSION["role"] = "Admin";
+
+    echo "Before session_unset():<br>";
+    print_r($_SESSION); // Output session data
+
+    session_unset(); // Unset all session variables
+
+    echo "<br>After session_unset():<br>";
+    print_r($_SESSION); // Now empty but session is still active
+?>
+```
+3. 🔥 session_destroy() → Ends the session but does not unset variables immediately.
+```
+<?php
+    session_start(); // Start the session
+
+    $_SESSION["username"] = "JohnDoe";
+    $_SESSION["role"] = "Admin";
+
+    echo "Before session_destroy():<br>";
+    print_r($_SESSION);
+
+    session_destroy(); // Destroy the session
+
+    echo "<br>After session_destroy():<br>";
+    print_r($_SESSION); // Session variables still exist until a page reloads
+?>
+```
+4. 🔍 After session_destroy(), refresh the page to fully remove the session.
+
+__________________________________________
+
+# Type Casting in PHP
+```php
+(int)    // Cast to integer
+(bool)   // Cast to boolean
+(float)  // Cast to float (or use (double))
+(string) // Cast to string
+(array)  // Cast to array
+(object) // Cast to object
+(unset)  // Cast to NULL
+```
+Examples-
+
+1. Integer Casting ((int))
+```
+<?php
+    $num = "10.99";
+    $int_value = (int) $num;
+    echo $int_value; // Output: 10
+?>
+```
+2. Boolean Casting ((bool))
+```php
+<?php
+    $val1 = 0;
+    $val2 = 100;
+    $val3 = "";
+    $val4 = "Hello";
+
+    echo (bool) $val1 ? "true" : "false"; // Output: false
+    echo "<br>";
+    echo (bool) $val2 ? "true" : "false"; // Output: true
+    echo "<br>";
+    echo (bool) $val3 ? "true" : "false"; // Output: false
+    echo "<br>";
+    echo (bool) $val4 ? "true" : "false"; // Output: true
+?>
+```
+3. Float (Double) Casting ((float) or (double))
+```php
+<?php
+    $num = "100";
+    $float_value = (float) $num;
+    echo $float_value; // Output: 100
+?>
+```
+4. String Casting ((string))
+```php
+<?php
+    $num = 123;
+    $bool = true;
+    $arr = array("apple", "banana");
+
+    echo (string) $num;  // Output: "123"
+    echo "<br>";
+    echo (string) $bool; // Output: "1" (true is converted to "1")
+    echo "<br>";
+    echo (string) $arr;  // Output: "Array" (arrays cannot be converted)
+?>
+```
+5. Array Casting ((array))
+```php
+<?php
+    $str = "Hello";
+    $int = 50;
+    $float = 10.5;
+    $bool = true;
+
+    print_r((array) $str);  // Output: Array ( [0] => Hello )
+    print_r((array) $int);  // Output: Array ( [0] => 50 )
+    print_r((array) $float); // Output: Array ( [0] => 10.5 )
+    print_r((array) $bool);  // Output: Array ( [0] => 1 )
+?>
+```
+6. Object Casting ((object))
+```php
+<?php
+    $arr = ["name" => "John", "age" => 30];
+    $obj = (object) $arr;
+
+    echo $obj->name; // Output: John
+?>
+```
+7. Unset Casting ((unset))
+```php
+<?php
+    $num = 100;
+    $unset_value = (unset) $num;
+    var_dump($unset_value); // Output: NULL
+?>
+```
+
+
